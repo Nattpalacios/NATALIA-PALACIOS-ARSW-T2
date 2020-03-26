@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
@@ -16,7 +17,7 @@ public class Cache {
     ArrayList<Country> countries = new ArrayList<>();
     private final CopyOnWriteArrayList<Triplet<String, Timer, String>> countriesList = new CopyOnWriteArrayList<>();
 
-    private void countriesConnection(JSONArray paises){
+    public void countriesConnection(JSONArray paises){
         JSONObject country = null;
         for(int i = 0; i < paises.length(); i++){
             boolean flag = false;
@@ -34,6 +35,55 @@ public class Cache {
                 countries.add(newCountry);
             }
         }
+    }
+
+    public boolean countriesEmpty(){
+        if(countries.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void tiempo(String name, String data){
+        Timer timer = new Timer();
+        final Triplet country = new Triplet<>(name,timer,data);
+        countriesList.add(country);
+        TimerTask timerTask = new TimerTask(){
+            public void run(){
+                countriesList.remove(country);
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask,300000, 300000);
+    }
+
+    public ArrayList<Country> getCountries(){
+        return countries;
+    }
+
+    public String countryByName(String country) throws CoronavirusException{
+        String objeto = null;
+        for(int i = 0; i < countriesList.size(); i++){
+            if(countriesList.get(i).getValue0().equals(country)){
+                objeto = countriesList.get(i).getValue2();
+                break;
+            }
+        }
+        return objeto;
+    }
+
+    public String countryByName(String country, String data) throws CoronavirusException{
+        String objeto = "";
+        for(int i = 0; i < countriesList.size(); i++){
+            if(countriesList.get(i).getValue0().equals(country)){
+                objeto = countriesList.get(i).getValue2();
+                break;
+            }
+        }
+        if(objeto.equals("")){
+            tiempo(country,data);
+        }
+        return objeto;
     }
 
 }
