@@ -1,6 +1,7 @@
 var apiclient = (function(){
 
     function countryByName(name){
+        document.getElementById('country').innerHTML = name;
         axios({
             method :'get',
             url : "/coronavirus/"+ name
