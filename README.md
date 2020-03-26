@@ -4,6 +4,10 @@
 
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://natalia-palacios-arsw-t2.herokuapp.com/)
 
+## Despliegue local
+
+Para correr el programa localmente se debe escribir el comando 'mvn spring-boot:run' y en el navegador escribir 'http://localhost:8080/index.html'
+
 ## Preparación para el Parcial
 
 Con el objetivo de preparar el examen final del segundo tercio, por favor siga las siguientes instrucciones.
