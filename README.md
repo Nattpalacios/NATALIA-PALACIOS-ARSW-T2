@@ -1,5 +1,7 @@
 # Escuela Colombiana de Ingeniería Julio Garavito - Arquitecturas de Software ARSW - Parcial Segundo Tercio
 
+SE REALIZARON LOS BONOS
+
 ## Ejecución local
 
 Para correr el programa localmente se debe escribir el comando 'mvn spring-boot:run' y en el navegador escribir 'http://localhost:8080/index.html'
