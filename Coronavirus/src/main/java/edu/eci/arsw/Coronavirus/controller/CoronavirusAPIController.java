@@ -30,7 +30,7 @@ public class CoronavirusAPIController {
         }
     }
 
-    @GetMapping("info/{country}")
+    @GetMapping("/info/{country}")
     public ResponseEntity<?> infoCountry(@PathVariable String country){
         try{
             return new ResponseEntity<>(css.infoCountry(country), HttpStatus.ACCEPTED);

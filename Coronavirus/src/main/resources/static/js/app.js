@@ -64,7 +64,7 @@ var app = (function(){
 
     function infTabla(info){
         $('#infoTabla tbody').empty();
-
+        apiclient.getPos(info.name);
         var markup= "<tr> <td> Num deaths </td> <td>" + info.muertos + "</td> </tr>"
         $("#infoFilas").append(markup)
         var markup= "<tr> <td> Num infected </td> <td>" + info.infectados + "</td> </tr>"
@@ -83,12 +83,15 @@ var app = (function(){
         })
     }
 
-    
+    function print(name){
+        plotMarkers(name);
+    }
 
     return{
         crearTabla:crearTabla,
         tablaByName:tablaByName,
-        infTabla:infTabla
+        infTabla:infTabla,
+        print:print
     }
 
 })();
