@@ -1,12 +1,12 @@
 # Escuela Colombiana de Ingeniería Julio Garavito - Arquitecturas de Software ARSW - Parcial Segundo Tercio
 
+## Ejecución local
+
+Para correr el programa localmente se debe escribir el comando 'mvn spring-boot:run' y en el navegador escribir 'http://localhost:8080/index.html'
+
 ## Despliegue - Heroku
 
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://natalia-palacios-arsw-t2.herokuapp.com/)
-
-## Despliegue local
-
-Para correr el programa localmente se debe escribir el comando 'mvn spring-boot:run' y en el navegador escribir 'http://localhost:8080/index.html'
 
 ## Preparación para el Parcial
 
