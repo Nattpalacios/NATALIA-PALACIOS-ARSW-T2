@@ -39,7 +39,6 @@ public class CoronavirusService {
             JSONObject newData = new JSONObject(data);
             JSONObject coronavirus = new JSONObject(newData.get("data").toString());
             JSONArray paises = new JSONArray(coronavirus.get("covid19Stats").toString());
-            //JSONObject pais = new JSONObject(paises.get(0).toString());
             cache.countriesConnection(paises);
         }
 

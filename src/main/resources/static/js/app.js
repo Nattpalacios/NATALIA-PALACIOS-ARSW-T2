@@ -22,9 +22,6 @@ function initMap()
     zoom: 8
   });
 
-  fetch('https://raw.githubusercontent.com/jayshields/google-maps-api-template/master/markers.json')
-    .then(function(response){return response.json()})
-    .then(plotMarkers);
 }
 
 var markers;
@@ -32,11 +29,12 @@ var bounds;
 
 function plotMarkers(m)
 {
+  initMap();
   markers = [];
   bounds = new google.maps.LatLngBounds();
 
   m.forEach(function (marker) {
-    var position = new google.maps.LatLng(marker.lat, marker.lng);
+    var position = new google.maps.LatLng(marker.latlng[0], marker.latlng[1]);
 
     markers.push(
       new google.maps.Marker({
