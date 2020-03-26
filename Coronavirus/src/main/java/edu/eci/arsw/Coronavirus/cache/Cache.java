@@ -72,6 +72,15 @@ public class Cache {
         return objeto;
     }
 
+    public Country infoCountry(String country) throws  CoronavirusException{
+        for(int i = 0; i < countries.size(); i++){
+            if(countries.get(i).getName().equals(country)){
+                return countries.get(i);
+            }
+        }
+        throw new CoronavirusException("El pais no se encuentra");
+    }
+
     public String countryByName(String country, String data) throws CoronavirusException{
         String objeto = "";
         for(int i = 0; i < countriesList.size(); i++){

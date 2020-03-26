@@ -29,13 +29,17 @@ public class CoronavirusService {
         }
     }
 
+    public Country infoCountry(String country) throws CoronavirusException{
+        return cache.infoCountry(country);
+    }
+
     public ArrayList<Country> countries() throws CoronavirusException {
         if(cache.countriesEmpty()){
             String data = conexion.connection();
             JSONObject newData = new JSONObject(data);
             JSONObject coronavirus = new JSONObject(newData.get("data").toString());
             JSONArray paises = new JSONArray(coronavirus.get("covid19Stats").toString());
-            JSONObject pais = new JSONObject(paises.get(0).toString());
+            //JSONObject pais = new JSONObject(paises.get(0).toString());
             cache.countriesConnection(paises);
         }
 

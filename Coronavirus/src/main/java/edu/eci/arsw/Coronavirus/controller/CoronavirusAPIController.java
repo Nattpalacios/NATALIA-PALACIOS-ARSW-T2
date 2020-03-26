@@ -20,16 +20,6 @@ public class CoronavirusAPIController {
     @Autowired
     CoronavirusService css;
 
-    @GetMapping("")
-    public ResponseEntity<?> countries(){
-        try {
-            return new ResponseEntity<>(css.countries(), HttpStatus.ACCEPTED);
-        } catch (CoronavirusException e) {
-            Logger.getLogger(CoronavirusAPIController.class.getName()).log(Level.SEVERE, null, e);
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
-        }
-    }
-
     @GetMapping("/{country}")
     public ResponseEntity<?> countryByName(@PathVariable String country){
         try {
@@ -37,6 +27,26 @@ public class CoronavirusAPIController {
         } catch (CoronavirusException e) {
             Logger.getLogger(CoronavirusAPIController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("info/{country}")
+    public ResponseEntity<?> infoCountry(@PathVariable String country){
+        try{
+            return new ResponseEntity<>(css.infoCountry(country), HttpStatus.ACCEPTED);
+        }catch(CoronavirusException e){
+            Logger.getLogger(CoronavirusAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("")
+    public ResponseEntity<?> countries(){
+        try {
+            return new ResponseEntity<>(css.countries(), HttpStatus.ACCEPTED);
+        } catch (CoronavirusException e) {
+            Logger.getLogger(CoronavirusAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
 
