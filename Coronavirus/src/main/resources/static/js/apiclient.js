@@ -19,4 +19,9 @@ var apiclient = (function(){
         .catch(error => console.log(error));
     }
 
+    return{
+        countries:countries,
+        countryByName:countryByName
+    }
+
 })();
