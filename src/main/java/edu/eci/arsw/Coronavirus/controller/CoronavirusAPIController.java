@@ -20,6 +20,11 @@ public class CoronavirusAPIController {
     @Autowired
     CoronavirusService css;
 
+    /**
+     * Regresa las regiones de un pais que han sido infectadas
+     * @param country nombre del pais que se quiere consultar
+     * @return regiones del pais especificado
+     */
     @GetMapping("/{country}")
     public ResponseEntity<?> countryByName(@PathVariable String country){
         try {
@@ -30,6 +35,11 @@ public class CoronavirusAPIController {
         }
     }
 
+    /**
+     * Regresa el total de los casos de un pais
+     * @param country nombre del pais
+     * @return total de casos del pais especificado
+     */
     @GetMapping("/info/{country}")
     public ResponseEntity<?> infoCountry(@PathVariable String country){
         try{
@@ -40,6 +50,10 @@ public class CoronavirusAPIController {
         }
     }
 
+    /**
+     * Retorna todos los paises que tienen personas infectadas con el coronavirus
+     * @return todos los paises
+     */
     @GetMapping("")
     public ResponseEntity<?> countries(){
         try {

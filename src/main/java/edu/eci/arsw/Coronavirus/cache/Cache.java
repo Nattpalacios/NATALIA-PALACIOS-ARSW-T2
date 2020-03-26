@@ -17,6 +17,10 @@ public class Cache {
     ArrayList<Country> countries = new ArrayList<>();
     private final CopyOnWriteArrayList<Triplet<String, Timer, String>> countriesList = new CopyOnWriteArrayList<>();
 
+    /**
+     * Agrega la informacion de los paises al cache
+     * @param paises Es un arreglo de paises
+     */
     public void countriesConnection(JSONArray paises){
         JSONObject country = null;
         for(int i = 0; i < paises.length(); i++){
@@ -37,6 +41,10 @@ public class Cache {
         }
     }
 
+    /**
+     * Revisa si todos los paises se encuentran en el cache
+     * @return boolean afirmando o negando
+     */
     public boolean countriesEmpty(){
         if(countries.isEmpty()){
             return true;
@@ -45,6 +53,11 @@ public class Cache {
         }
     }
 
+    /**
+     * A los 5 minutos elimina el pais del cache
+     * @param name nombre del pais
+     * @param data toda la informacion
+     */
     public void tiempo(String name, String data){
         Timer timer = new Timer();
         final Triplet country = new Triplet<>(name,timer,data);
@@ -57,10 +70,20 @@ public class Cache {
         timer.scheduleAtFixedRate(timerTask,300000, 300000);
     }
 
+    /**
+     * Retorna la informacion de todos los paises del cache
+     * @return informacion de los paises
+     */
     public ArrayList<Country> getCountries(){
         return countries;
     }
 
+    /**
+     *
+     * @param country nombre del pais
+     * @return toda la informacion del pais con el nombre dado
+     * @throws CoronavirusException se da si el pais dado no existe
+     */
     public String countryByName(String country) throws CoronavirusException{
         String objeto = null;
         for(int i = 0; i < countriesList.size(); i++){
@@ -72,6 +95,12 @@ public class Cache {
         return objeto;
     }
 
+    /**
+     * Retorna toda la informacion del pais que se encuentre en el cache
+     * @param country nombre del pais
+     * @return la informacion del pais
+     * @throws CoronavirusException se da si el pais no existe
+     */
     public Country infoCountry(String country) throws  CoronavirusException{
         for(int i = 0; i < countries.size(); i++){
             if(countries.get(i).getName().equals(country)){
