@@ -1,6 +1,8 @@
 # Escuela Colombiana de Ingeniería Julio Garavito - Arquitecturas de Software ARSW - Parcial Segundo Tercio
 
-SE REALIZARON LOS BONOS
+### SE REALIZARON LOS BONOS
+
+### Para poder visualizar el país en el mapa, se debe poner el cursor sobre el mapa y oprimir Ctrl y la ruedita del mouse para alejar o Ctrl + alejar con el mouse del portátil, hasta que se visualice que está sobre el país. (No supe quitarle el zoom)
 
 ## Ejecución local
 
